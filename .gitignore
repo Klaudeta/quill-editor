@@ -1,0 +1,33 @@
+/target/
+
+# Eclipse files
+.project
+.settings
+.classpath
+
+# IDEA files
+.idea
+/.idea/
+/.idea/workspace.xml
+*.iml
+
+# macOs
+.DS_Store
+
+# Frontend
+/build-tools/bin/
+/build-tools/etc/
+/build-tools/lib/
+/build-tools/node/
+/build-tools/node_modules/
+pom.xml.versionsBackup
+
+# Jrebel
+rebel.xml
+
+#Vaadin
+webpack.generated.js
+node_modules/
+package.json
+package-lock.json
+webpack.config.js
