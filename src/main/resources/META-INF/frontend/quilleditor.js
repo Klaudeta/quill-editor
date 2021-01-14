@@ -185,11 +185,11 @@ class QuillEditor extends LitElement{
     }
 
     getHtml() {
-        return quill.root.innerHTML;
+        return this.quillEditor.root.innerHTML;
     }
 
     setHtml(htmlContent) {
-        quill.root.innerHTML = htmlContent;
+        this.quillEditor.root.innerHTML = htmlContent;
     }
 }
 
