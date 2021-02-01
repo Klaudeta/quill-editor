@@ -53,7 +53,7 @@ public interface QuillToolbarConfigurator extends HasElement {
     }
 
     /**
-     * Configuring the editor to not include the ordered & bullet lists commands:
+     * Configuring the editor to not include the ordered &amp; bullet lists commands:
      *
      * @return this instance of the {@link QuillEditorComponent} as a QuillToolbarConfiguration
      */
@@ -113,7 +113,7 @@ public interface QuillToolbarConfigurator extends HasElement {
     }
 
     /**
-     * Configuring the editor to not include the font & background color options:
+     * Configuring the editor to not include the font &amp; background color options:
      *
      * @return this instance of the {@link QuillEditorComponent} as a QuillToolbarConfiguration
      */

@@ -1,5 +1,7 @@
 package org.vaadin.klaudeta.quill;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.ClientCallable;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasComponents;
@@ -13,19 +15,17 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.dom.DisabledUpdateMode;
 import com.vaadin.flow.function.SerializableConsumer;
-import java.util.Objects;
 
 /**
  * A custom RichText editor component for Flow using Quill library.
  */
-
 @Tag("quill-editor")
 @NpmPackage(value = "lit-element", version = "^2.2.1")
 @NpmPackage(value = "lit-html", version = "^1.1.2")
 @NpmPackage(value = "quill", version = "^1.3.6")
 @JsModule("./quilleditor.js")
-@CssImport("quill.snow.css")
-@CssImport(value = "./custom-quillEditor.css")
+@CssImport("./quill.snow.css")
+@CssImport("./custom-quillEditor.css")
 public class QuillEditorComponent extends Component implements HasComponents, QuillToolbarConfigurator, HasSize, QuillValueChangeNotifier, HasStyle {
 
     public static final String EMPTY_VALUE = "<p><br></p>";
@@ -49,9 +49,7 @@ public class QuillEditorComponent extends Component implements HasComponents, Qu
         editor.setId("editor-quill");
         add(editor);
         this.getElement().executeJs("$0.initEditor($1)",this, editor.getElement());
-
     }
-
 
     @ClientCallable(DisabledUpdateMode.ALWAYS)
     private void setHtml(String htmlContent) {
@@ -85,14 +83,14 @@ public class QuillEditorComponent extends Component implements HasComponents, Qu
         if(!Objects.equals(oldContent, htmlContent)){
             this.htmlContent = htmlContent;
             runBeforeClientResponse(ui -> {
-                editor.getElement().callJsFunction("$0.setHtml($1)", this,  htmlContent);
+                editor.getElement().executeJs("$0.setHtml($1)", this,  htmlContent);
             });
         }
-
     }
 
     private void runBeforeClientResponse(SerializableConsumer<UI> command) {
         getElement().getNode().runWhenAttached(ui -> ui
                 .beforeClientResponse(this, context -> command.accept(ui)));
     }
+
 }
