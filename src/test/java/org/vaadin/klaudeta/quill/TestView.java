@@ -1,6 +1,8 @@
 package org.vaadin.klaudeta.quill;
 
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
@@ -13,14 +15,19 @@ public class TestView extends VerticalLayout {
 
     public TestView() {
         QuillEditor quillEditor = new QuillEditor();
-
-        quillEditor.getToolbarConfigurator().noFontDecorators()
-                .noColors().initEditor();
-
+        quillEditor.getToolbarConfigurator().noFontDecorators().noColors().initEditor();
+        quillEditor.setHeight("20em");
         add(quillEditor);
 
-        quillEditor.setHeight("60%");
+        add(new HorizontalLayout(
+                new Button("Clear Editor", event -> quillEditor.clear()),
+                new Button("Toggle ReadOnly", event -> quillEditor.setReadOnly(!quillEditor.isReadOnly()))
+        ));
+
         Div div = new Div();
+        div.getStyle().set("overflow", "auto");
+        div.setHeight("20em");
+        div.setWidth("20em");
         add(div);
 
         quillEditor.addValueChangeListener(event -> {
@@ -29,4 +36,5 @@ public class TestView extends VerticalLayout {
 
         this.setSizeFull();
     }
+
 }
