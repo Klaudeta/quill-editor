@@ -20,8 +20,8 @@ import com.vaadin.flow.function.SerializableConsumer;
  * A custom RichText editor component for Flow using Quill library.
  */
 @Tag("quill-editor")
-@NpmPackage(value = "lit-element", version = "^2.2.1")
-@NpmPackage(value = "lit-html", version = "^1.1.2")
+@NpmPackage(value = "lit-element", version = "^3.0.0")
+@NpmPackage(value = "lit-html", version = "^2.4.0")
 @NpmPackage(value = "quill", version = "^1.3.6")
 @JsModule("./quilleditor.js")
 @CssImport("./quill.snow.css")
